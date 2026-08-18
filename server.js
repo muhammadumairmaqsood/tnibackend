@@ -15,20 +15,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: [
-      "https://tngifrontend.vercel.app",
-      "http://localhost:5173",
-      "http://localhost:8080",
-    ],
+    origin: "https://tngifrontend.vercel.app",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
   }),
 );
-app.options("*", cors());
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", router);
 app.use("/api/auth", authRoutes);
